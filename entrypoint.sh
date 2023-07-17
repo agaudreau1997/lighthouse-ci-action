@@ -170,7 +170,7 @@ theme_push_log="$(mktemp)"
 shopify theme push --development --json $theme_root > "$theme_push_log" && cat "$theme_push_log"
 preview_url="$(cat "$theme_push_log" | tail -n 1 | jq -r '.theme.preview_url')"
 preview_id="$(cat "$theme_push_log" | tail -n 1 | jq -r '.theme.id')"
-echo "PREVIEW_ID: $preview_id" >> $GITHUB_OUTPUT
+echo "PREVIEW_ID=$preview_id" >> $GITHUB_OUTPUT
 
 step "Configuring Lighthouse CI"
 
